@@ -1,19 +1,22 @@
 import React from "react";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-const TrelloList = ({title}) => {
+const TrelloCard = ({text}) => {
     return (
-        <div style={style.container}>
-            <h4>{title}</h4>
-        </div>
+        <Card style={styles.cardContainer}>
+            <CardContent>
+                <Typography gutterBottom>{text}</Typography>
+            </CardContent>
+        </Card>
     )
 }
 
-const style = {
-    container: {
-        backgroundColor: "#ccc",
-        borderRadius: 3,
-        width: 300,
+const styles = {
+    cardContainer: {
+        marginBottom: 0
     }
 }
 
-export default TrelloList
+export default TrelloCard
