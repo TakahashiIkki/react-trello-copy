@@ -3,10 +3,26 @@ import TrelloList from "./TrelloList";
 import {connect} from "react-redux";
 import TrelloActionButton from "./TrelloActionButton";
 import {DragDropContext} from "react-beautiful-dnd";
+import {sort} from "../actions";
 
 class App extends Component {
-    onDragEnd = () => {
-        // TODO - reordering login
+    onDragEnd = (result) => {
+        const {destination, source, draggableId} = result;
+
+        console.log(destination)
+        if (!destination) {
+            return;
+        }
+
+        this.props.dispatch(
+            sort(
+                source.droppableId,
+                destination.droppableId,
+                source.index,
+                destination.index,
+                draggableId
+            )
+        )
     }
 
     render() {
